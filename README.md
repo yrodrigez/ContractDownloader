@@ -1,7 +1,7 @@
 # ContractDownloader
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-Java application that downloads all contracts from Yahoo! finance
+Java application that downloads all available contracts (Company's options) from Yahoo! finance
 
 [Download](https://github.com/yrodrigez/ContractDownloader/raw/master/out/artifacts/ContractDownloader_jar/ContractDownloader.jar)
 

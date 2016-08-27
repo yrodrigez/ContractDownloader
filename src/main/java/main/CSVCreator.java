@@ -26,11 +26,12 @@ class CSVCreator {
       System.getProperty("line.separator")
   );
 
-  void addLine(String line) {
-    this.sb.append(line);
+  synchronized void writeData(StringBuilder data) {
+    System.out.println(Thread.currentThread().getName()+ " writing");
+    this.sb.append(data);
   }
 
-  void createCSV() {
+  synchronized void createCSV() {
     File file = new File(System.getProperty("user.home") + File.separator + "Yahoo Options");
 
     if (!file.exists())
@@ -53,7 +54,7 @@ class CSVCreator {
             + "Yahoo Options"
             + File.separator
             + new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date())
-            + "(" + times + ")"
+            + "(" + times++ + ")"
             + ".csv"
         );
       }

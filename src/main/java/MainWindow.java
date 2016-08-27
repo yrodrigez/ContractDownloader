@@ -34,6 +34,12 @@ public class MainWindow extends Application {
   private Slider volumeSlider;
 
   private Parent createContent() {
+
+    //-----------------------------------------
+    System.setProperty("sun.net.client.defaultConnectTimeout", "5000");
+    System.setProperty("sun.net.client.defaultReadTimeout", "5000");
+    //-----------------------------------------
+
     BorderPane borderPane = new BorderPane();
     ToolBar toolBar = new ToolBar();
     root = new VBox();
@@ -43,8 +49,10 @@ public class MainWindow extends Application {
     goButon = new Button("GO!");
     terminate = new Button("Terminate");
     minDate = new DatePicker();
+    minDate.setMaxWidth(105);
     minDate.setValue(LocalDate.now());
     maxDate = new DatePicker();
+    maxDate.setMaxWidth(minDate.getMaxWidth());
     maxDate.setValue(LocalDate.now().plus(5L, ChronoUnit.YEARS));
     goButon.setOnAction(event -> {
       musicTask = new MusicTask(volumeSlider);
@@ -74,14 +82,14 @@ public class MainWindow extends Application {
       terminate.setOnAction(terminateEvent -> {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Terminate");
-        alert.setHeaderText("Estás seguro?");
+        alert.setHeaderText("Are you sure?");
         alert.setContentText(
-          "Si lo haces, se escribirá todo lo encontrado hasta ahora pero no se garantiza la integridad de los datos...."
+          "If you do this you will lose ALL the progress and you'll need to start over again later..."
         );
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && ButtonType.OK == result.get()) {
-          this.stopThreadsDownloader();
+          this.stopThreads();
         }
       });
 
@@ -95,7 +103,7 @@ public class MainWindow extends Application {
     toolBar.getItems().add(maxDate);
     toolBar.getItems().add(new Label("Volume "));
     toolBar.getItems().add(volumeSlider);
-    root.setPrefSize(900, 600);
+    root.setPrefSize(850, 600);
 
     return borderPane;
   }
@@ -106,8 +114,8 @@ public class MainWindow extends Application {
     stage.setTitle("Contract Donloader");
     stage.getIcons().add(new Image("image.png"));
     stage.setScene(new Scene(createContent()));
-    stage.setMaxWidth(900);
-    stage.setMinWidth(900);
+    stage.setMaxWidth(850);
+    stage.setMinWidth(850);
     stage.show();
   }
 
@@ -126,18 +134,27 @@ public class MainWindow extends Application {
       root.getChildren().add(label);
 
       ProgressBar progressBar = new ProgressBar();
-      progressBar.setPrefWidth(850);
+      progressBar.setPrefWidth(800);
       progressBar.progressProperty().bind(threadDownloader[i].progressProperty());
       root.getChildren().add(progressBar);
 
+      mainThreads[i].setDaemon(true);
       mainThreads[i].start();
     }
   }
 
-  private void stopThreadsDownloader() {
+  private void stopThreads() {
     for (ThreadDownloader threadDownloader : this.threadDownloader) {
       threadDownloader.stop();
     }
+    musicTask.stop();
+    timeElapsedTask.stop();
+  }
+
+  @Override
+  public void stop(){
+    System.out.println("Stage is closing...");
+    stopThreads();
   }
 
 }

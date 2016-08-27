@@ -9,14 +9,14 @@ public class ContractDownloader {
     return Runtime.getRuntime().availableProcessors();
   }
 
-  private static CSVCreator csvCreator = new CSVCreator();
+  private static volatile  CSVCreator csvCreator = new CSVCreator();
 
-  public static void createCSV() {
+  public static synchronized void createCSV() {
     csvCreator.createCSV();
   }
 
-  public static synchronized void writeData(String data) {
-    csvCreator.addLine(data);
+  public static synchronized void writeData(StringBuilder data) {
+      csvCreator.writeData(data);
   }
 
 }

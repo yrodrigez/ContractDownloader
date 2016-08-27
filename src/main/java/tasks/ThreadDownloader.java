@@ -64,9 +64,6 @@ public class ThreadDownloader extends Task<Double> {
       data.append(new SimpleDateFormat("yyyy/MM/dd").format(new java.util.Date(o.getExpiration() * 1000L)));
       data.append(System.getProperty("line.separator"));
     }
-
-    ContractDownloader.writeData(data.toString());
-    data.setLength(0);
   }
 
   private void doThings() throws IOException {
@@ -110,6 +107,7 @@ public class ThreadDownloader extends Task<Double> {
 
   @Override
   protected Double call() throws Exception {
+    Thread.sleep(jump * 100);
     try {
       for (int i = position; i < NasdaqStock.symbols.size() && !stop; i += jump) {
         this.symbol = NasdaqStock.symbols.get(i);
@@ -126,6 +124,11 @@ public class ThreadDownloader extends Task<Double> {
         updateMessage("Downloading from NYSE: " + this.symbol + " " + Math.round(workDone / remainingWork * 100) + "% completed");
         updateProgress(workDone, remainingWork);
       }
+
+      updateMessage("Writing...");
+      ContractDownloader.writeData(data);
+      updateMessage("Work Done...");
+
     } catch (IOException e) {
       e.printStackTrace();
     }

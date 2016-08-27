@@ -6,7 +6,7 @@ import javafx.concurrent.Task;
  * @author Yago on 27/08/2016.
  */
 public class TimeElapsedTask extends Task<Void> {
-  private static boolean stop;
+  private boolean stop;
   private int seconds;
   private int time;
   private int minutes;
@@ -16,7 +16,7 @@ public class TimeElapsedTask extends Task<Void> {
     stop = false;
   }
 
-  static void stop(){
+  public void stop(){
     stop = true;
   }
   @Override

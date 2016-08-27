@@ -17,11 +17,8 @@ public class CSVWriterTask extends Task<Void> {
 
     for(int i = 0; i < mainThreads.length; i++){
       mainThreads[i].join();
-      System.out.println("Thread "+ i +" stopped");
+      System.out.println("Thread " + (i+1) + " stopped");
     }
-
-    MusicTask.stop();
-    TimeElapsedTask.stop();
 
     ContractDownloader.createCSV();
     System.exit(0);

@@ -10,7 +10,7 @@ import javafx.scene.media.MediaPlayer;
  */
 public class MusicTask extends Task<Void> {
 
-  private static MediaPlayer audio;
+  private MediaPlayer audio;
   private Slider slider;
 
   public MusicTask(Slider slider){
@@ -19,13 +19,14 @@ public class MusicTask extends Task<Void> {
     audio = new MediaPlayer(media);
   }
 
-  static void stop() {
+  public  void stop() {
     audio.stop();
   }
 
   @Override
   protected Void call() throws Exception {
     audio.setCycleCount(MediaPlayer.INDEFINITE);
+    audio.setVolume(0d);
     slider.setValue(audio.getVolume() * 100);
     slider.valueProperty().addListener(observable -> audio.setVolume(slider.getValue() / 100f));
     audio.play();

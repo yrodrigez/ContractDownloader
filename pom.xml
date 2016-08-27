@@ -13,7 +13,7 @@
         <jdk.version>1.8</jdk.version>
         <jackson.version>2.7.0</jackson.version>
     </properties>
-    <name>ContractDownloader</name>
+    <name>main.ContractDownloader</name>
 
     <build>
         <plugins>
@@ -33,7 +33,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ContractDownloader</mainClass>
+                            <mainClass>main.ContractDownloader</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

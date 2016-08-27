@@ -1,9 +1,14 @@
+package tasks;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.concurrent.Task;
+import main.ContractDownloader;
+import main.NasdaqStock;
+import main.NyseStock;
+import main.Option;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -18,20 +23,26 @@ public class ThreadDownloader extends Task<Double> {
   private String symbol;
   private int position;
   private int jump;
-
+  private long minDate;
+  private long maxDate;
+  private long currentDate;
 
   private int workDone;
-  double remainingWork;
+  private double remainingWork;
 
+  private boolean stop;
 
-  public ThreadDownloader(int position, int jump) {
+  public ThreadDownloader(int position, int jump, long minDate, long maxDate) {
+    stop = false;
     workDone = 0;
-    remainingWork = ((NasdaqStock.symbols.size() + NyseStock.symbols.size())/(ContractDownloader.getMaxCoreNumber()*2));
+    remainingWork = ((NasdaqStock.symbols.size() + NyseStock.symbols.size()) / (ContractDownloader.getMaxCoreNumber() * 2));
     this.position = position;
     this.jump = jump;
+    this.minDate = minDate;
+    this.maxDate = maxDate;
   }
 
-  public void writeData(List<Option> options, String companyPrice, Option.Type type) {
+  private void writeData(List<Option> options, String companyPrice, Option.Type type) {
     for (Option o : options) {
       o.type = type;
       data.append(symbol);
@@ -55,11 +66,10 @@ public class ThreadDownloader extends Task<Double> {
     }
 
     ContractDownloader.writeData(data.toString());
-
     data.setLength(0);
   }
 
-  public void doThings() throws IOException {
+  private void doThings() throws IOException {
     try {
       ObjectMapper mapper = new ObjectMapper();
       JsonNode jsonNode = mapper.readTree(new URL("https://query1.finance.yahoo.com/v7/finance/options/" + symbol));
@@ -70,52 +80,60 @@ public class ThreadDownloader extends Task<Double> {
       JsonNode datasNode = jsonNode.findValue("expirationDates");
       Queue<Long> dates = mapper.readValue(datasNode.traverse(), new TypeReference<Queue<Long>>() {
       });
-      while (!dates.isEmpty()) {
+
+      dates.forEach(date -> {
+        if (date < minDate | date > maxDate) dates.remove(date);
+      });
+
+      while (!dates.isEmpty() && !stop) {
+        currentDate = dates.poll();
+        jsonNode = mapper.readTree(
+          new URL("https://query1.finance.yahoo.com/v7/finance/options/" + symbol + "?date=" + currentDate)
+        );
+
         JsonNode calls = jsonNode.findValue("calls");
         List<Option> callOptions = mapper.readValue(calls.traverse(), new TypeReference<List<Option>>() {
         });
-        writeData(callOptions, companyPrice, Option.Type.CALL);
+        this.writeData(callOptions, companyPrice, Option.Type.CALL);
 
         JsonNode puts = jsonNode.findValue("puts");
         List<Option> putOptions = mapper.readValue(puts.traverse(), new TypeReference<List<Option>>() {
         });
-        writeData(putOptions, companyPrice, Option.Type.PUT);
-
-        mapper = new ObjectMapper();
-        jsonNode = mapper.readTree(
-          new URL("https://query1.finance.yahoo.com/v7/finance/options/" + symbol + "?date=" + dates.poll())
-        );
+        this.writeData(putOptions, companyPrice, Option.Type.PUT);
       }
 
-    } catch (NullPointerException | FileNotFoundException pe) {
-      System.err.println("No hay contratos en: " + "https://query1.finance.yahoo.com/v7/finance/options/" + symbol);
+    } catch (Exception pe) {
+      System.err.println("No options found at: " + "https://query1.finance.yahoo.com/v7/finance/options/" + symbol + "?date=" + currentDate);
+      if (pe.getMessage() != null) {System.err.println("Exception msj: " + pe.getMessage());}
     }
   }
 
   @Override
   protected Double call() throws Exception {
     try {
-
-      for (int i = position; i < NasdaqStock.symbols.size(); i += jump) {
+      for (int i = position; i < NasdaqStock.symbols.size() && !stop; i += jump) {
         this.symbol = NasdaqStock.symbols.get(i);
         doThings();
         workDone++;
-        updateMessage("downloading from NASDAQ: " + this.symbol +". "+ Math.round(workDone/remainingWork*100) + "% completed");
+        updateMessage("Downloading from NASDAQ: " + this.symbol + " " + Math.round(workDone / remainingWork * 100) + "% completed");
         updateProgress(workDone, remainingWork);
       }
 
-      for (int i = position; i < NyseStock.symbols.size(); i += jump) {
+      for (int i = position; i < NyseStock.symbols.size() && !stop; i += jump) {
         this.symbol = NyseStock.symbols.get(i);
         doThings();
         workDone++;
-        updateMessage("downloading from NYSE: " + this.symbol+". "+ Math.round(workDone/remainingWork*100) + "% completed");
+        updateMessage("Downloading from NYSE: " + this.symbol + " " + Math.round(workDone / remainingWork * 100) + "% completed");
         updateProgress(workDone, remainingWork);
       }
-
     } catch (IOException e) {
       e.printStackTrace();
     }
 
     return null;
+  }
+
+  public void stop(){
+    this.stop = true;
   }
 }

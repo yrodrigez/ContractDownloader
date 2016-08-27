@@ -1,13 +1,14 @@
+package main;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Yago
- * @date 07/08/2016
+ * @author Yago at 07/08/2016
  */
 public class NasdaqStock {
 
-  public static List<String> symbols = new ArrayList<String>();
+  public static List<String> symbols = new ArrayList<>();
   static {
     symbols.add("AAAP");
     symbols.add("AAL");

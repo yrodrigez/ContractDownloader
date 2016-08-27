@@ -1,3 +1,5 @@
+package main;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -137,7 +139,7 @@ public class Option {
 
   @Override
   public String toString() {
-    return "Option{" +
+    return "main.Option{" +
       "type=" + type.name() +
       ", contractSymbol='" + contractSymbol + '\'' +
       ", strike=" + strike +

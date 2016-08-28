@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.concurrent.Task;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import main.ContractDownloader;
 import main.NasdaqStock;
 import main.NyseStock;
@@ -125,15 +127,22 @@ public class ThreadDownloader extends Task<Double> {
         updateProgress(workDone, remainingWork);
       }
 
-      updateMessage("Writing...");
       ContractDownloader.writeData(data);
-      updateMessage("Work Done...");
-
+      updateMessage("Jobs Done...");
+      sayJobsDone();
     } catch (IOException e) {
       e.printStackTrace();
     }
 
     return null;
+  }
+
+  private void sayJobsDone() {
+    MediaPlayer audio;
+    Media media = new Media(getClass().getResource("../JobsDone.mp3").toExternalForm());
+    audio = new MediaPlayer(media);
+    audio.setVolume(1d);
+    audio.play();
   }
 
   public void stop(){

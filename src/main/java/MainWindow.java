@@ -34,12 +34,6 @@ public class MainWindow extends Application {
   private Slider volumeSlider;
 
   private Parent createContent() {
-
-    //-----------------------------------------
-    System.setProperty("sun.net.client.defaultConnectTimeout", "5000");
-    System.setProperty("sun.net.client.defaultReadTimeout", "5000");
-    //-----------------------------------------
-
     BorderPane borderPane = new BorderPane();
     ToolBar toolBar = new ToolBar();
     root = new VBox();
@@ -111,7 +105,11 @@ public class MainWindow extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    stage.setTitle("Contract Donloader");
+    //-----------------------------------------
+    System.setProperty("sun.net.client.defaultConnectTimeout", "5000");
+    System.setProperty("sun.net.client.defaultReadTimeout", "5000");
+    //-----------------------------------------
+    stage.setTitle("Contract Downloader");
     stage.getIcons().add(new Image("image.png"));
     stage.setScene(new Scene(createContent()));
     stage.setMaxWidth(850);
@@ -141,14 +139,20 @@ public class MainWindow extends Application {
       mainThreads[i].setDaemon(true);
       mainThreads[i].start();
     }
+
   }
 
+
   private void stopThreads() {
-    for (ThreadDownloader threadDownloader : this.threadDownloader) {
-      threadDownloader.stop();
+    try {
+      for (ThreadDownloader threadDownloader : this.threadDownloader) {
+        threadDownloader.stop();
+      }
+      musicTask.stop();
+      timeElapsedTask.stop();
+    }catch (NullPointerException ex){
+      // threads are null. so do nothing.
     }
-    musicTask.stop();
-    timeElapsedTask.stop();
   }
 
   @Override

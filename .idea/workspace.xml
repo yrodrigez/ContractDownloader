@@ -6,16 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f254952-9d86-44b5-97e4-f35e94e7dc3a" name="Default" comment="Rearrangement of everything :godmode:&#10;&#10;Maximum and minimum date functionality you can now pick a date range!&#10;Created task package, created main package too..&#10;Renamed Loader to MainWindow&#10;&#10;Now CSVWriterTask is the one who waits for the threads. once all are finished it will write the data and stop other threads.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="1f254952-9d86-44b5-97e4-f35e94e7dc3a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/JobsDone.mp3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/MainWindow.java" afterPath="$PROJECT_DIR$/src/main/java/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/CSVCreator.java" afterPath="$PROJECT_DIR$/src/main/java/main/CSVCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/main/ContractDownloader.java" afterPath="$PROJECT_DIR$/src/main/java/main/ContractDownloader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tasks/CSVWriterTask.java" afterPath="$PROJECT_DIR$/src/main/java/tasks/CSVWriterTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tasks/MusicTask.java" afterPath="$PROJECT_DIR$/src/main/java/tasks/MusicTask.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tasks/ThreadDownloader.java" afterPath="$PROJECT_DIR$/src/main/java/tasks/ThreadDownloader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tasks/TimeElapsedTask.java" afterPath="$PROJECT_DIR$/src/main/java/tasks/TimeElapsedTask.java" />
     </list>
     <ignored path="ContractDownloader.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThreadDownloader.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ThreadDownloader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/tasks/ThreadDownloader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+            <state relative-caret-position="399">
+              <caret line="144" column="17" selection-start-line="144" selection-start-column="17" selection-end-line="144" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -76,8 +71,8 @@
       <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="141" column="29" selection-start-line="141" selection-start-column="29" selection-end-line="141" selection-end-column="29" />
+            <state relative-caret-position="127">
+              <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -96,8 +91,8 @@
       <file leaf-file-name="MusicTask.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/tasks/MusicTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            <state relative-caret-position="195">
+              <caret line="17" column="33" selection-start-line="17" selection-start-column="3" selection-end-line="18" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#508#509#0" expanded="true" />
@@ -107,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CSVCreator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CSVCreator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/main/CSVCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="55" column="77" selection-start-line="55" selection-start-column="77" selection-end-line="55" selection-end-column="77" />
+            <state relative-caret-position="714">
+              <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -204,10 +199,10 @@
         <option value="$PROJECT_DIR$/src/main/java/tasks/TimeElapsedTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/tasks/MusicTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/main/ContractDownloader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tasks/ThreadDownloader.java" />
         <option value="$PROJECT_DIR$/src/main/java/tasks/CSVWriterTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/main/CSVCreator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tasks/ThreadDownloader.java" />
       </list>
     </option>
   </component>
@@ -390,6 +385,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContractDownloader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContractDownloader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="artifacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ContractDownloader_jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -407,14 +424,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Yago\IdeaProjects\ContractDownloader\src\main\java" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Yago\IdeaProjects\ContractDownloader\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Yago\IdeaProjects\ContractDownloader\src\main\resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\IdeaProjects\ContractDownloader\src\main\resources" />
+      <recent name="C:\Users\Yago\IdeaProjects\ContractDownloader\src\main\java" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MainWindow">
@@ -1021,7 +1039,7 @@
       <workItem from="1471212563519" duration="7838000" />
       <workItem from="1471792719173" duration="17018000" />
       <workItem from="1472332752746" duration="141000" />
-      <workItem from="1472332919335" duration="7630000" />
+      <workItem from="1472332919335" duration="13866000" />
     </task>
     <task id="LOCAL-00001" summary=":knife: unused imports">
       <created>1471792777716</created>
@@ -1037,11 +1055,18 @@
       <option name="project" value="LOCAL" />
       <updated>1472332156754</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Rearrangement of everything :godmode:&#10;&#10;Maximum and minimum date functionality you can now pick a date range!&#10;Created task package, created main package too..&#10;Renamed Loader to MainWindow&#10;&#10;Now CSVWriterTask is the one who waits for the threads. once all are finished it will write the data and stop other threads.">
+      <created>1472341295325</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1472341295325</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95589000" />
+    <option name="totallyTimeSpent" value="101825000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -1372,42 +1397,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tasks/MusicTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#508#509#0" expanded="true" />
-            <element signature="e#530#531#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tasks/TimeElapsedTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="141" column="29" selection-start-line="141" selection-start-column="29" selection-end-line="141" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tasks/ThreadDownloader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tasks/CSVWriterTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1431,8 +1420,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/CSVCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="55" column="77" selection-start-line="55" selection-start-column="77" selection-end-line="55" selection-end-column="77" />
+        <state relative-caret-position="714">
+          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tasks/TimeElapsedTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tasks/MusicTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="3" selection-end-line="18" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#530#531#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tasks/ThreadDownloader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="144" column="17" selection-start-line="144" selection-start-column="17" selection-end-line="144" selection-end-column="17" />
           <folding />
         </state>
       </provider>

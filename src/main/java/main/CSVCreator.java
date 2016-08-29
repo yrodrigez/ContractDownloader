@@ -32,7 +32,7 @@ class CSVCreator {
   }
 
   synchronized void createCSV() {
-    File file = new File(System.getProperty("user.home") + File.separator + "Yahoo Options");
+    File file = new File(System.getProperty("user.home") + File.separator + "YahooOptions");
 
     if (!file.exists())
       if (!file.mkdirs()) System.err.println("Could not create the file");

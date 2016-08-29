@@ -11,6 +11,7 @@ import main.NasdaqStock;
 import main.NyseStock;
 import main.Option;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -138,11 +139,15 @@ public class ThreadDownloader extends Task<Double> {
   }
 
   private void sayJobsDone() {
-    MediaPlayer audio;
-    Media media = new Media(getClass().getResource("../JobsDone.mp3").toExternalForm());
-    audio = new MediaPlayer(media);
-    audio.setVolume(1d);
-    audio.play();
+    try {
+      MediaPlayer audio;
+      Media media = new Media(getClass().getResource(".."+ File.separator + "JobsDone.mp3").toExternalForm());
+      audio = new MediaPlayer(media);
+      audio.setVolume(1d);
+      audio.play();
+    } catch (NullPointerException np){
+      System.err.println("Something happened with the resource.");
+    }
   }
 
   public void stop(){

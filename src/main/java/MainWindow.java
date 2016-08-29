@@ -49,10 +49,14 @@ public class MainWindow extends Application {
     maxDate.setMaxWidth(minDate.getMaxWidth());
     maxDate.setValue(LocalDate.now().plus(5L, ChronoUnit.YEARS));
     goButon.setOnAction(event -> {
-      musicTask = new MusicTask(volumeSlider);
-      musicThread = new Thread(musicTask);
-      musicThread.setDaemon(true);
-      musicThread.start();
+      try {
+        musicTask = new MusicTask(volumeSlider);
+        musicThread = new Thread(musicTask);
+        musicThread.setDaemon(true);
+        musicThread.start();
+      } catch (NullPointerException ex) {
+        System.err.println("I can not play the music! :(");
+      }
 
       timeElapsedTask = new TimeElapsedTask();
       threadTimeElapsed = new Thread(timeElapsedTask);
@@ -150,15 +154,17 @@ public class MainWindow extends Application {
       }
       musicTask.stop();
       timeElapsedTask.stop();
-    }catch (NullPointerException ex){
+    }catch (Exception ex){
       // threads are null. so do nothing.
     }
   }
 
   @Override
   public void stop(){
-    System.out.println("Stage is closing...");
+    System.out.println("closing...");
     stopThreads();
+    System.out.println("closed");
   }
+
 
 }

@@ -5,6 +5,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
+
 /**
  * @author Yago on 27/08/2016.
  */
@@ -15,11 +17,11 @@ public class MusicTask extends Task<Void> {
 
   public MusicTask(Slider slider){
     this.slider = slider;
-    Media media = new Media(getClass().getResource("../scanning.mp3").toExternalForm());
+    Media media = new Media(getClass().getResource(".."+ File.separator +"scanning.mp3").getFile());
     audio = new MediaPlayer(media);
   }
 
-  public  void stop() {
+  public void stop() {
     audio.stop();
   }
 

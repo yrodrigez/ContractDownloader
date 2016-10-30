@@ -13,7 +13,7 @@
         <jdk.version>1.8</jdk.version>
         <jackson.version>2.7.0</jackson.version>
     </properties>
-    <name>main.ContractDownloader</name>
+    <name>contractdownloader.main.ContractDownloader</name>
 
     <build>
         <plugins>
@@ -31,7 +31,7 @@
                     <artifactId>javafx-maven-plugin</artifactId>
                     <version>8.5.0</version>
                     <configuration>
-                        <mainClass>MainWindow</mainClass>
+                        <mainClass>contractdownloader.MainWindow</mainClass>
                     </configuration>
                 </plugin>
             <plugin>
@@ -41,7 +41,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>MainWindow</mainClass>
+                            <mainClass>contractdownloader.MainWindow</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
